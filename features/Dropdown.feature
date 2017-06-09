@@ -2,13 +2,12 @@
 Feature: Selecting from a Dropdown
 
   @acceptance
-  Scenario: Select option one from the dropdown
-    Given Move to "dropdown" page
-    When Select "Option 1" from the dropdown
-    Then Should see the "Option 1" selected
+  Scenario Outline: Select option from the dropdown
+    Given Move to <Page> page
+    When Select <Select_item> from the dropdown
+    Then Should see the <Expected_item> selected
 
-  @acceptance
-  Scenario: Select option two from the dropdown
-    Given Move to "dropdown" page
-    When Select "Option 2" from the dropdown
-    Then Should see the "Option 2" selected
+  Examples: Try for Option 1 and 2
+    | Page        | Select_item   | Expected_item |
+    | "dropdown"  | "Option 1"    | "Option 1"    |
+    | "dropdown"  | "Option 2"    | "Option 2"    |
