@@ -8,14 +8,12 @@ Given(/^Open a browser$/) do
 end
 
 When(/^Login with "([^"]*)" username and "([^"]*)" password$/) do |username, password|
-  puts "#{username} and #{password}"
   url = "http://#{username}:#{password}@" + site_domen_name + "/basic_auth"
   @driver.get(url)
   @driver.switch_to.alert.accept()
 end
 
 Then(/^Should see the "([^"]*)" message$/) do |message|
-  puts "#{message}"
   expect(@driver.find_element(:css, '.example p').text).to eq(message)
 end
 
