@@ -1,19 +1,15 @@
-chrome_driver_path = File.join(File.dirname(__FILE__), "..", "..", "drivers", "chromedriver.exe")
-firefox_driver_path = File.join(File.dirname(__FILE__), "..", "..", "drivers", "geckodriver.exe")
-puts chrome_driver_path
-puts firefox_driver_path
+
+
+site_domen_name = 'the-internet.herokuapp.com'
+site_url = 'http://' + site_domen_name + '/'
 
 Given(/^Open a browser$/) do
-  #@driver = Selenium::WebDriver.for :chrome, driver_path: chrome_driver_path
-  @driver = Selenium::WebDriver.for :firefox, driver_path: firefox_driver_path
-  @driver.manage.timeouts.implicit_wait = 10
-  @driver.manage.timeouts.page_load = 10
-  puts 'WebDriver has been created'
+
 end
 
 When(/^Login with "([^"]*)" username and "([^"]*)" password$/) do |username, password|
   puts "#{username} and #{password}"
-  url = "http://#{username}:#{password}@the-internet.herokuapp.com/basic_auth"
+  url = "http://#{username}:#{password}@" + site_domen_name + "/basic_auth"
   @driver.get(url)
   @driver.switch_to.alert.accept()
 end
@@ -21,4 +17,19 @@ end
 Then(/^Should see the "([^"]*)" message$/) do |message|
   puts "#{message}"
   expect(@driver.find_element(:css, '.example p').text).to eq(message)
+end
+
+When(/^Move to "([^"]*)" page$/) do |page|
+  @driver.get(site_url + page)
+end
+
+When(/^Select "([^"]*)" from the dropdown$/) do |option |
+  dropdown = @driver.find_element(id: "dropdown")
+  @selected_list = Selenium::WebDriver::Support::Select.new dropdown
+  @selected_list.select_by(:text, option)
+end
+
+Then(/^Should see the "([^"]*)" selected$/) do |expected_selected_option|
+  actual_selected_option = @selected_list.selected_options[0].text
+  expect(actual_selected_option).to eq(expected_selected_option)
 end
