@@ -17,3 +17,7 @@ end
 Then(/^Should see the "([^"]*)" selected$/) do |expected_selected_option|
   expect(@dropdown.selected_option).to eq(expected_selected_option)
 end
+
+Then(/^Check if 2(st|nd|rd|th) checkbox is selected$/) do |index|
+  expect(@checkboxes.is_checked? index).to eql true
+end

@@ -18,6 +18,7 @@ Before do
 
   @basic_auth = BasicAuth.new @driver, site_domen_name
   @dropdown = Dropdown.new @driver, site_url
+  @checkboxes = Checkboxes.new @driver
 end
 
 After do
