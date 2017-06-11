@@ -1,20 +1,23 @@
 require 'selenium-webdriver'
 require 'rspec'
 
+Dir["../pages/*.rb"].each {|file| require_relative(file)}
 
-chrome_driver_path = File.join(File.dirname(__FILE__), "..", "..", "drivers", "chromedriver.exe")
 firefox_driver_path = File.join(File.dirname(__FILE__), "..", "..", "drivers", "geckodriver.exe")
-puts chrome_driver_path
 puts firefox_driver_path
 
-Before do
+site_domen_name = 'the-internet.herokuapp.com'
+site_url = 'http://' + site_domen_name + '/'
 
+Before do
   # init webdriver
-  #@driver = Selenium::WebDriver.for :chrome, driver_path: chrome_driver_path
   @driver = Selenium::WebDriver.for :firefox, driver_path: firefox_driver_path
   @driver.manage.timeouts.implicit_wait = 10
   @driver.manage.timeouts.page_load = 10
   puts 'WebDriver has been created'
+
+  @basic_auth = BasicAuth.new @driver, site_domen_name
+  @dropdown = Dropdown.new @driver, site_url
 end
 
 After do
