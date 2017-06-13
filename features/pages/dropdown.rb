@@ -1,13 +1,8 @@
-class Dropdown
+class Dropdown < PageActions
   DROPDOWN_ELEMENT = {id: 'dropdown'}
 
-  def initialize(driver, site_url)
-    @driver = driver
-    @site_url = site_url
-  end
-
-  def visit(page)
-    @driver.get(@site_url + page)
+  def path
+    site_url + "dropdown"
   end
 
   def select(option)

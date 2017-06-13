@@ -7,7 +7,7 @@ Then(/^Should see the "([^"]*)" message$/) do |message|
 end
 
 When(/^Move to "([^"]*)" page$/) do |page|
-  @dropdown.visit(page)
+  instance_variable_get("@#{page}").visit
 end
 
 When(/^Select "([^"]*)" from the dropdown$/) do |option |
@@ -19,5 +19,14 @@ Then(/^Should see the "([^"]*)" selected$/) do |expected_selected_option|
 end
 
 Then(/^Check if 2(st|nd|rd|th) checkbox is selected$/) do |index|
-  expect(@checkboxes.is_checked? index).to eql true
+  expect(@checkboxes.is_checked? index).to eql(true)
+end
+
+When(/^Click on start button$/) do
+  @dynamic_loading.start_button.click
+end
+
+Then(/^"([^"]*)" message is displayed$/) do |message|
+  @dynamic_loading.success_message_displayed?
+  expect(@dynamic_loading.finish_element.text).to eql(message)
 end

@@ -1,8 +1,8 @@
-class Checkboxes
+class Checkboxes < PageActions
   CHECKBOXES = {css: 'input[type="checkbox"]'}
 
-  def initialize(driver)
-    @driver = driver
+  def path
+    site_url + "checkboxes"
   end
 
   def is_checked? index
