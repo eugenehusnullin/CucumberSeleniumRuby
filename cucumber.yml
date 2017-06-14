@@ -3,3 +3,4 @@ dropdown_tests: --format html --out dropdown.html --format pretty --tags @dropdo
 acceptance: --format html --out acceptance.html --format pretty --tags @acceptance
 checkboxes_tests: --format html --out checkboxes.html --format pretty --tags @checkboxes
 dynamic_tests: --format html --out dynamic.html --format pretty --tags @dynamic
+frames_tests: --format html --out frames.html --format pretty --tags @frames

@@ -15,6 +15,7 @@ Before do
   @dropdown = Dropdown.new @driver
   @checkboxes = Checkboxes.new @driver
   @dynamic_loading = DynamicLoading.new @driver
+  @tinymce = Tinymce.new @driver
 end
 
 After do |scenario|

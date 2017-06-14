@@ -18,4 +18,12 @@ class PageActions
   def wait_for (seconds)
     Selenium::WebDriver::Wait.new(timeout: seconds).until {yield}
   end
+
+  def switch_to frame
+    @driver.switch_to.frame frame
+  end
+
+  def switch_to_default
+    @driver.switch_to.default_content
+  end
 end

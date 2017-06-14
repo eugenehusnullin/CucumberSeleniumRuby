@@ -2,3 +2,4 @@
 drivers/
 Gemfile.lock
 *.html
+screenshots/
