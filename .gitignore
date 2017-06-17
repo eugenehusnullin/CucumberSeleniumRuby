@@ -1,5 +1,5 @@
 .idea/
-drivers/
+drivers/*
 Gemfile.lock
 *.html
-screenshots/
+screenshots/*
