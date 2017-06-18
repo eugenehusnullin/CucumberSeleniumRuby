@@ -1,4 +1,5 @@
-class BasicAuth < PageActions
+class BasicAuth
+  include PageActions
   SUCCESS_MESSAGE = { css: '.example p' }
 
   def with(username, password)
