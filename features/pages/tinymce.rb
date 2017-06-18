@@ -3,7 +3,7 @@ class Tinymce < PageActions
   PAGE_TITLE = {css: 'h3'}
 
   def path
-    site_url + "tinymce"
+    "/tinymce"
   end
 
   def editor

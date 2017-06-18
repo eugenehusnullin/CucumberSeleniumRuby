@@ -3,7 +3,7 @@ class DynamicLoading < PageActions
   FINISH_ELEMENT = {css: '#finish'}
 
   def path
-    site_url + "dynamic_loading/1"
+    "/dynamic_loading"
   end
 
   def start_button

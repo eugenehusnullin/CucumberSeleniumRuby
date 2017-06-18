@@ -2,7 +2,7 @@ class Dropdown < PageActions
   DROPDOWN_ELEMENT = {id: 'dropdown'}
 
   def path
-    site_url + "dropdown"
+    "/dropdown"
   end
 
   def select(option)

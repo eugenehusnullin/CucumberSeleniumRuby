@@ -2,7 +2,7 @@ class Checkboxes < PageActions
   CHECKBOXES = {css: 'input[type="checkbox"]'}
 
   def path
-    site_url + "checkboxes"
+    "/checkboxes"
   end
 
   def is_checked? index

@@ -30,3 +30,7 @@ Then(/^"([^"]*)" message is displayed$/) do |message|
   @dynamic_loading.success_message_displayed?
   expect(@dynamic_loading.finish_element.text).to eql(message)
 end
+
+Given(/^Move to "([^"]*)" page "([^"]*)"$/) do |page, path|
+  instance_variable_get("@#{page}").visit path
+end
